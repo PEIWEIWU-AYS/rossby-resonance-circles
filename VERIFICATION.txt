@@ -1,0 +1,35 @@
+Lean verification, 28 November 2026
+Circle enumeration and a sharpness family for resonant Rossby wave triads
+
+Lean (version 4.19.0, arm64-apple-darwin23.6.0, commit 6caaee842e94, Release)
+Fresh project build; external packages shared at their pinned revisions with clean tracked trees.
+lake build
+Build completed successfully.
+lake env lean -DwarningAsError=true Main.lean
+16 audited declarations.
+
+'Rossby.frequency_cross' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.circle_defect' depends on axioms: [propext, Quot.sound]
+'Rossby.resonates_iff_circle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.circle_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.quadratic_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.mem_representations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.mem_rootPair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.mem_allPartners' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.allPartners_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.divisor_eight_local' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.inverse_parameter_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.Pell.orbit_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.Pell.resonance_identity' depends on axioms: [propext, Quot.sound]
+'Rossby.Pell.primitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.Pell.ratio_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Rossby.Pell.primitive_sharpness' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+SHA-256 of build inputs
+d4d6e00110eed7685fab437d6aff0125f45c9ec1cba0eebb47bb0a54a16b9368  Counting.lean
+a730f3031569a645b8ca6af15192c265dc7ad4bcac01f6c71270acc351a645cb  Main.lean
+7ec4108efba6b69212235e4f5937b7dd848ed146573df35ee10d18a284e8e095  PellSharp.lean
+6667a09da47a6e9c7a216ab488fde8a58fc57f687a76cabd7f30792ca90b41ab  RossbyCircle.lean
+55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea  lean-toolchain
+231cd68b02afd75c83807e76693212e2ed3ca562f150749e9f01c2614f7e8aa4  lakefile.toml
+7b067dbac37e450ae7e4ae93102b6d4d3a94ce29b4fd618fb3cac1adb5945e91  lake-manifest.json

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "Please cite this release of the paper and its Lean formalization."
+type: software
+version: 1.0.0
+title: "Circle enumeration and a sharpness family for resonant Rossby wave triads"
+authors:
+  - family-names: Wu
+    given-names: Peiwei
+    affiliation: "Shandong Medical and Pharmaceutical University (formerly Binzhou Medical University)"
+  - family-names: Peng
+    given-names: Qian
+    affiliation: "The University of Melbourne"
+contact:
+  - family-names: Peng
+    given-names: Qian
+    affiliation: "The University of Melbourne"
+repository-code: "https://github.com/PEIWEIWU-AYS/rossby-resonance-circles"
+keywords:
+  - "Rossby waves"
+  - "wave resonance"
+  - "Gaussian integers"
+  - "Pell equation"
+  - "Lean"

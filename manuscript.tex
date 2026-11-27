@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.04in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\ii}{\mathrm i}
+\title{Circle enumeration and a sharpness family\\ for resonant Rossby wave triads}
+\author{Peiwei Wu$^{1}$ \qquad Qian Peng$^{2,*}$\\[3pt]
+\small $^{1}$Shandong Medical and Pharmaceutical University\\
+\small (formerly Binzhou Medical University)\\
+\small $^{2}$The University of Melbourne\\
+\small $^{*}$Corresponding author}
+\date{}
+\hypersetup{pdftitle={Circle enumeration and a sharpness family for resonant Rossby wave triads},pdfauthor={Peiwei Wu and Qian Peng}}
+\begin{document}
+\maketitle
+\begin{abstract}
+For the square-torus Rossby dispersion relation at infinite deformation radius, we give a two-square enumeration of the exact resonant triads through a prescribed nonzonal mode. If this mode has squared length $M$, there are at most $2r_2(M^3)$ ordered decompositions. For a box of side parameter $N$, the total number of circle points examined is $O(N^2(1+\log N)^7)$, giving deterministic enumeration in $N^2(\log N)^{O(1)}$ time. We also construct primitive triads whose positive output components $(a,b)$ satisfy $(a/b^4)^2=3-8/b^2$ for unbounded $b$. Thus the coefficient and exponent in Kopp's conjectured horizontal bound are both sharp if the bound holds.
+\end{abstract}
+
+\section{The resonance equation}
+The Charney--Hasegawa--Mima equation on the square torus at infinite Rossby deformation radius has frequency proportional to $-a/(a^2+b^2)$ at wavevector $(a,b)$. Identify the integer lattice with $\ZZ[\ii]$ and write $\omega(w)=\operatorname{Re}(1/w)$ for $w\ne0$. The common physical factor cancels in the resonance equation. For a fixed output $w$, we seek all $z$ with
+\begin{equation}\label{eq:res}
+ z\ne0,\qquad w-z\ne0,\qquad \omega(z)+\omega(w-z)=\omega(w).
+\end{equation}
+An ordered decomposition distinguishes $z$ and $w-z$. We call a mode nonzonal when its real part is nonzero. For a fully nonzonal triad we require this of all three modes. A box of radius $N$ bounds the absolute value of each component of each mode by $N$.
+
+Bustamante and Hayat reduced the homogeneous resonance equation to rational quadratic forms~\cite{BH}. Harris, Connaughton and Bustamante described the real fixed-mode resonance curve as the intersection of two quadrics~\cite{HCB}. Kishimoto and Yoneda proved that the horizontal axis contains no frequencies in a fully nonzonal resonant triad~\cite{KY}. Kopp gave a rational parametrization, described the elliptic curves obtained by fixing a direction, and asked for a guaranteed search range for his parameters~\cite[\S\S1.7--1.8]{Kopp}. Hayat and coauthors gave a complete cubic-time box search~\cite{HAWB}. A subsequent parametrization samples a rational coordinate and an angle and checks the rounded outputs~\cite[Algorithm~1]{HMB}. We instead fix the output mode itself and enumerate an integer circle with a prescribed norm.
+
+\section{A fixed output}
+Write $r_2(m)=\#\{(u,v)\in\ZZ^2:u^2+v^2=m\}$, counting signs and order.
+\begin{theorem}\label{th:circle}
+Let $w=a+\ii b$, $a\ne0$, and put $M=a^2+b^2$. For $z,w-z\ne0$, set $k=z(w-z)$ and $C=2ak-Mw$. Then \eqref{eq:res} holds if and only if $|C|^2=M^3$. Each circle point has at most two preimages, interchanged by $z\mapsto w-z$. In particular, the number of ordered decompositions is at most $2r_2(M^3)$.
+\end{theorem}
+\begin{proof}
+Write $k=U+\ii V$. The sum of the reciprocal input modes is $w/k$. Hence the frequency equation is equivalent to
+\[
+ a(U^2+V^2)=M(aU+bV).
+\]
+Multiplying by $4a$ and completing the two squares gives
+\[
+ (2aU-Ma)^2+(2aV-Mb)^2=M^3.
+\]
+Given a point $C$ on the circle, first test whether $k=(C+Mw)/(2a)$ lies in $\ZZ[\ii]$. Its preimages satisfy $z^2-wz+k=0$. Two roots with the same sum and product are either equal or exchanged, since $(z-v)(z+v-w)=0$ whenever $z(w-z)=v(w-v)$. For reconstruction, test $D=w^2-4k$ for a Gaussian-integer square. For each root $h$ of $D$, retain $(w+h)/2$ if its two coordinates are integral and both input modes are nonzero. This procedure recovers precisely the solutions.
+\end{proof}
+For example $w=16+2\ii$, $z=1-8\ii$ and $w-z=15+10\ii$ give $M=260$ and frequencies $4/65$, $1/65$ and $3/65$. The divisor bound on $r_2$ gives $O_\varepsilon(M^\varepsilon)$ partners for each fixed $w$, independently of any cutoff on the inputs~\cite[Theorems 278 and 315]{HW}.
+
+\section{A deterministic box search}
+\begin{theorem}\label{th:algorithm}
+Let $N\ge1$ and $X=2N^2$. Over all nonzonal outputs in the box, the circle search examines at most
+\[
+ 16X(1+\log X)^7
+\]
+points, counted with multiplicity across outputs. All fully nonzonal resonant triads in the box can be enumerated deterministically in $N^2(1+\log N)^{O(1)}$ time on a random-access machine charging polynomial logarithmic cost for arithmetic and addressing on $O(\log(2N))$-bit integers.
+\end{theorem}
+\begin{proof}
+There are at most $r_2(m)$ outputs of squared length $m$. Hence the candidate count is at most $\sum_{m\le X}r_2(m)r_2(m^3)$, with $m$ running over positive integers. Jacobi's two-square formula gives $r_2(m)\le4\tau(m)$, where $\tau$ counts positive divisors~\cite[Theorem 278]{HW}. Let $d_8(m)$ count ordered factorizations of $m$ into eight positive factors. For a prime power $p^e$,
+\[
+ (e+1)(3e+1)\le {e+7\choose7}=d_8(p^e).
+\]
+Indeed, the terms agree at $e=0$, and the ratio for the binomial coefficient dominates the ratio on the left because $(e+8)(3e+1)-(e+2)(3e+4)=15e$. Multiplicativity now gives $r_2(m)r_2(m^3)\le16d_8(m)$. Summing over the first seven factors and bounding the number of choices of the eighth by $X$ divided by their product gives $\sum_{m\le X}d_8(m)\le X (\sum_{j\le X}1/j)^7\le X(1+\log X)^7$.
+
+Precompute smallest prime factors through $X$ by a sieve. For each prime $p\equiv1\pmod4$ store one Gaussian factor $u+\ii v$ of norm $p$. A scan of $1\le v\le u$, $u^2+v^2\le X$ supplies all of them in $O(X)$ pairs. For each output, factor $m$ using the table. Unique factorization in $\ZZ[\ii]$ lists the points of norm $m^3$ as follows. For $p\equiv1\pmod4$ with $p^e\Vert m$ and $p=\pi\bar\pi$, use in turn $\pi^j\bar\pi^{3e-j}$, $0\le j\le3e$. The prime $2$ contributes $(1+\ii)^{3e}$, an inert odd prime contributes the real factor $p^{3e/2}$ (its valuation in $m$ is even), and the four units supply the final choices. The resulting list has exactly $r_2(m^3)$ elements. Factoring, traversing the list and reconstructing a partner require at most polynomial logarithmic work per output and per candidate; the integers in every test have $O(\log(2N))$ bits. For example, for $D=E+\ii F$ one uses integer square roots of $E^2+F^2$ and $(|D|\pm E)/2$ and verifies the signs by multiplication. Discard inputs outside the box or with zero real part. Primitivity, when required, is tested by a gcd.
+\end{proof}
+
+Kopp's own homogeneous parameters also admit a direct height cutoff. His inverse map gives $s=a^2+b^2$, $t=bx-ay$, $u=ax+by$ for the input $z=x+\ii y$~\cite[Theorem 2.3 in the preprint]{Kopp}. The coordinates used for the search are $s,t,s-2u$. In a wave box all three have absolute value at most $2N^2$: for the third coordinate use $s-2u=|w-z|^2-|z|^2$. Removing a common factor can only decrease this bound. The circle search in Theorem~\ref{th:algorithm} avoids a scan over that three-dimensional parameter box.
+
+\section{Sharpness in Kopp's anisotropy conjecture}
+Kopp conjectures that the positive components of a mode belonging to a fully nonzonal resonance satisfy $a<\sqrt3\,b^4$, with the single exception $(800,4)$~\cite[Conjecture 5]{Kopp}. A triad is primitive if the four coordinates of $w,z$ have no common factor greater than one.
+\begin{theorem}\label{th:sharp}
+There are primitive, fully nonzonal resonant triads with $b\to\infty$ and
+\[
+ \,\left(\frac{a}{b^4}\right)^2=3-\frac{8}{b^2},\qquad a,b>0.
+\]
+In particular the coefficient $\sqrt3$ and the exponent $4$ in the conjecture cannot be decreased, even after removing any finite set of triads.
+\end{theorem}
+\begin{proof}
+Start at $(n,t)=(1,1)$ and iterate $(n,t)\mapsto(2n+t,3n+2t)$. This preserves $t^2-3n^2=-2$, preserves oddness of both coordinates and makes $n$ unbounded. Put
+\[
+\begin{aligned}
+ a&=16n^3t,& b&=2n,\\
+ H&=4n^2-2n-1,& x&=t(2n-1)H,\\
+ &&y&=-H(6n^2+3n-1).
+\end{aligned}
+\]
+These expressions follow by substituting $(s,t,u)=(2n,t,n-1)$ in Kopp's parametrization and using the Pell equation. Alternatively they can be checked directly in the cleared frequency identity
+\[
+ a|z|^2|w-z|^2=|w|^2\big(x|w-z|^2+(a-x)|z|^2\big).
+\]
+Here $0<x<a$: the factors of $x$ are positive and $a-x=t(8n^3+8n^2-1)>0$. For primitivity observe that $y+1=n(-24n^3+16n+1)$. A common divisor of $b$ and $y$ therefore divides $2$, and $x$ is odd. Finally $a/b^4=t/n$, which gives the stated identity. The positive ratios converge to $\sqrt3$ from below.
+\end{proof}
+The upper bound for arbitrary triads and the finiteness of the resonant modes on each positive horizontal line remain open.
+
+\paragraph{Formalization and reproducibility.}
+The Lean development proves the rational dispersion identity, the circle equivalence, the quadratic inversion, the characterization and cardinality bound of the full partner set, the inverse-parameter bound and the prime-power inequality. It proves Theorem~\ref{th:sharp} for primitive triads and arbitrarily large meridional coordinates. The complexity analysis uses classical two-square counting and the sieve described above. The accompanying integer-only Python implementation lists the primitive symmetry classes or all classes including their dilations. Its verification mode compares the result with direct exhaustive enumeration at $N=32$.
+
+\paragraph{Use of generative AI.} OpenAI Codex was used to derive the arguments, write the Lean and Python code and draft the manuscript.
+
+\begin{thebibliography}{9}
+\raggedright
+\bibitem{BH} M. D. Bustamante and U. Hayat, Complete classification of discrete resonant Rossby/drift wave triads on periodic domains, \emph{Commun. Nonlinear Sci. Numer. Simul.} \textbf{18} (2013), 2402--2419. \href{https://arxiv.org/abs/1210.2036}{arXiv:1210.2036}.
+\bibitem{HCB} J. Harris, C. Connaughton and M. D. Bustamante, Percolation transition in the kinematics of nonlinear resonance broadening in Charney--Hasegawa--Mima model of Rossby wave turbulence, \emph{New J. Phys.} \textbf{15} (2013), 083011. \href{https://doi.org/10.1088/1367-2630/15/8/083011}{doi:10.1088/1367-2630/15/8/083011}.
+\bibitem{HW} G. H. Hardy and E. M. Wright, \emph{An Introduction to the Theory of Numbers}, 6th ed., Oxford University Press, 2008.
+\bibitem{HAWB} U. Hayat, S. Amanullah, S. Walsh, M. Abdullah and M. D. Bustamante, Discrete resonant Rossby/drift wave triads: explicit parameterisations and a fast direct numerical search algorithm, \emph{Commun. Nonlinear Sci. Numer. Simul.} \textbf{79} (2019), 104896. \href{https://doi.org/10.1016/j.cnsns.2019.104896}{doi:10.1016/j.cnsns.2019.104896}.
+\bibitem{HMB} U. Hayat, I. Ullah, G. Murtaza, N. A. Azam and M. D. Bustamante, Enumerating discrete resonant Rossby/drift wave triads and their application in information security, \emph{Mathematics} \textbf{10} (2022), 4395. \href{https://doi.org/10.3390/math10234395}{doi:10.3390/math10234395}.
+\bibitem{KY} N. Kishimoto and T. Yoneda, A number theoretical observation of a resonant interaction of Rossby waves, \emph{Kodai Math. J.} \textbf{40} (2017), 16--20. \href{https://doi.org/10.2996/kmj/1490083220}{doi:10.2996/kmj/1490083220}.
+\bibitem{Kopp} G. S. Kopp, The arithmetic geometry of resonant Rossby wave triads, \emph{SIAM J. Appl. Algebra Geom.} \textbf{1} (2017), 352--373. \href{https://doi.org/10.1137/16M1077593}{doi:10.1137/16M1077593}.
+\end{thebibliography}
+\end{document}
