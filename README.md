@@ -3,7 +3,7 @@
 **Peiwei Wu** · Shandong Medical and Pharmaceutical University (formerly Binzhou Medical University)  
 **Qian Peng** · The University of Melbourne · Corresponding author
 
-[Paper](manuscript.pdf) · [Version DOI 10.5281/zenodo.24613761](https://doi.org/10.5281/zenodo.24613761) · [LaTeX source](manuscript.tex) · [Lean theorem audit](Main.lean) · [Exact enumeration in Python](enumerate_triads.py)
+[Paper](manuscript.pdf) · [Paper and abstract](https://peiweiwu-ays.github.io/rossby-resonance-circles/) · [Version DOI 10.5281/zenodo.24613761](https://doi.org/10.5281/zenodo.24613761) · [LaTeX source](manuscript.tex) · [Lean theorem audit](Main.lean) · [Exact enumeration in Python](enumerate_triads.py)
 
 **Exact Rossby wave triad enumeration.** A nonzonal square-torus output mode of squared length M has at most twice as many ordered resonant decompositions as there are signed, ordered representations of M³ by two squares. Enumerating those circles gives a deterministic box search in N² times a power of log N. A separate infinite family of primitive exact resonances satisfies (a/b⁴)² = 3 − 8/b². Along this family a/b⁴ approaches √3 from below as b grows, so any uniform polynomial upper bound requires exponent at least four. A [subsequent counterexample](https://doi.org/10.5281/zenodo.24591008) at b = 34 has a/b⁴ > 250 and disproves Kopp's proposed coefficient √3.
 
