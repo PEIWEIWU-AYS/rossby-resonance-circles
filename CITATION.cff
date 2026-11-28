@@ -1,11 +1,12 @@
 cff-version: 1.2.0
 message: "Please cite this release of the paper and its Lean formalization."
 type: software
-version: 1.0.0
+version: 1.1.0
 title: "Circle enumeration and a sharpness family for resonant Rossby wave triads"
 authors:
   - family-names: Wu
     given-names: Peiwei
+    orcid: "https://orcid.org/0009-0008-3096-1669"
     affiliation: "Shandong Medical and Pharmaceutical University (formerly Binzhou Medical University)"
   - family-names: Peng
     given-names: Qian

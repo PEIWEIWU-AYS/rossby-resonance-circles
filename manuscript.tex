@@ -17,7 +17,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-For the square-torus Rossby dispersion relation at infinite deformation radius, we give a two-square enumeration of the exact resonant triads through a prescribed nonzonal mode. If this mode has squared length $M$, there are at most $2r_2(M^3)$ ordered decompositions. For a box of side parameter $N$, the total number of circle points examined is $O(N^2(1+\log N)^7)$, giving deterministic enumeration in $N^2(\log N)^{O(1)}$ time. We also construct primitive triads whose positive output components $(a,b)$ satisfy $(a/b^4)^2=3-8/b^2$ for unbounded $b$. Thus the coefficient and exponent in Kopp's conjectured horizontal bound are both sharp if the bound holds.
+For the square-torus Rossby dispersion relation at infinite deformation radius, we give a two-square enumeration of the exact resonant triads through a prescribed nonzonal mode. If this mode has squared length $M$, there are at most $2r_2(M^3)$ ordered decompositions. For a box of side parameter $N$, the total number of circle points examined is $O(N^2(1+\log N)^7)$, giving deterministic enumeration in $N^2(\log N)^{O(1)}$ time. We also construct primitive triads whose positive output components $(a,b)$ satisfy $(a/b^4)^2=3-8/b^2$ for unbounded $b$. Along this family $a/b^4$ approaches $\sqrt3$ from below, so any uniform polynomial upper bound for $a$ in terms of $b$ must have exponent at least four. Subsequent counterexamples exceed Kopp's proposed coefficient $\sqrt3$.
 \end{abstract}
 
 \section{The resonance equation}
@@ -65,16 +65,16 @@ Indeed, the terms agree at $e=0$, and the ratio for the binomial coefficient dom
 Precompute smallest prime factors through $X$ by a sieve. For each prime $p\equiv1\pmod4$ store one Gaussian factor $u+\ii v$ of norm $p$. A scan of $1\le v\le u$, $u^2+v^2\le X$ supplies all of them in $O(X)$ pairs. For each output, factor $m$ using the table. Unique factorization in $\ZZ[\ii]$ lists the points of norm $m^3$ as follows. For $p\equiv1\pmod4$ with $p^e\Vert m$ and $p=\pi\bar\pi$, use in turn $\pi^j\bar\pi^{3e-j}$, $0\le j\le3e$. The prime $2$ contributes $(1+\ii)^{3e}$, an inert odd prime contributes the real factor $p^{3e/2}$ (its valuation in $m$ is even), and the four units supply the final choices. The resulting list has exactly $r_2(m^3)$ elements. Factoring, traversing the list and reconstructing a partner require at most polynomial logarithmic work per output and per candidate; the integers in every test have $O(\log(2N))$ bits. For example, for $D=E+\ii F$ one uses integer square roots of $E^2+F^2$ and $(|D|\pm E)/2$ and verifies the signs by multiplication. Discard inputs outside the box or with zero real part. Primitivity, when required, is tested by a gcd.
 \end{proof}
 
-Kopp's own homogeneous parameters also admit a direct height cutoff. His inverse map gives $s=a^2+b^2$, $t=bx-ay$, $u=ax+by$ for the input $z=x+\ii y$~\cite[Theorem 2.3 in the preprint]{Kopp}. The coordinates used for the search are $s,t,s-2u$. In a wave box all three have absolute value at most $2N^2$: for the third coordinate use $s-2u=|w-z|^2-|z|^2$. Removing a common factor can only decrease this bound. The circle search in Theorem~\ref{th:algorithm} avoids a scan over that three-dimensional parameter box.
+Kopp's own homogeneous parameters also admit a direct height cutoff. His inverse map gives $s=a^2+b^2$, $t=bx-ay$, $u=ax+by$ for the input $z=x+\ii y$~\cite[Theorem~2, (1.23)]{Kopp}. The coordinates used for the search are $s,t,s-2u$. In a wave box all three have absolute value at most $2N^2$: for the third coordinate use $s-2u=|w-z|^2-|z|^2$. Removing a common factor can only decrease this bound. The circle search in Theorem~\ref{th:algorithm} avoids a scan over that three-dimensional parameter box.
 
-\section{Sharpness in Kopp's anisotropy conjecture}
-Kopp conjectures that the positive components of a mode belonging to a fully nonzonal resonance satisfy $a<\sqrt3\,b^4$, with the single exception $(800,4)$~\cite[Conjecture 5]{Kopp}. A triad is primitive if the four coordinates of $w,z$ have no common factor greater than one.
+\section{A Pell family with quartic growth}
+Kopp conjectured that the positive components of a mode belonging to a fully nonzonal resonance satisfy $a<\sqrt3\,b^4$, with the single exception $(800,4)$~\cite[Conjecture 5]{Kopp}. A triad is primitive if the four coordinates of $w,z$ have no common factor greater than one.
 \begin{theorem}\label{th:sharp}
 There are primitive, fully nonzonal resonant triads with $b\to\infty$ and
 \[
  \,\left(\frac{a}{b^4}\right)^2=3-\frac{8}{b^2},\qquad a,b>0.
 \]
-In particular the coefficient $\sqrt3$ and the exponent $4$ in the conjecture cannot be decreased, even after removing any finite set of triads.
+In particular, for every $\gamma<4$, the ratios $a/b^\gamma$ are unbounded along this family.
 \end{theorem}
 \begin{proof}
 Start at $(n,t)=(1,1)$ and iterate $(n,t)\mapsto(2n+t,3n+2t)$. This preserves $t^2-3n^2=-2$, preserves oddness of both coordinates and makes $n$ unbounded. Put
@@ -91,7 +91,7 @@ These expressions follow by substituting $(s,t,u)=(2n,t,n-1)$ in Kopp's parametr
 \]
 Here $0<x<a$: the factors of $x$ are positive and $a-x=t(8n^3+8n^2-1)>0$. For primitivity observe that $y+1=n(-24n^3+16n+1)$. A common divisor of $b$ and $y$ therefore divides $2$, and $x$ is odd. Finally $a/b^4=t/n$, which gives the stated identity. The positive ratios converge to $\sqrt3$ from below.
 \end{proof}
-The upper bound for arbitrary triads and the finiteness of the resonant modes on each positive horizontal line remain open.
+In subsequent work~\cite[Theorem~1]{Counterexamples} we found a primitive resonant mode with $b=34$ and $a=334\,508\,643$. Its ratio $a/b^4$ exceeds $250$, disproving Kopp's conjecture even with its stated exception. Whether some constant $C$ gives a uniform quartic bound $a\le Cb^4$ is a separate question. Such a bound would imply that each positive horizontal line contains only finitely many positive resonant modes.
 
 \paragraph{Formalization and reproducibility.}
 The Lean development proves the rational dispersion identity, the circle equivalence, the quadratic inversion, the characterization and cardinality bound of the full partner set, the inverse-parameter bound and the prime-power inequality. It proves Theorem~\ref{th:sharp} for primitive triads and arbitrarily large meridional coordinates. The complexity analysis uses classical two-square counting and the sieve described above. The accompanying integer-only Python implementation lists the primitive symmetry classes or all classes including their dilations. Its verification mode compares the result with direct exhaustive enumeration at $N=32$.
@@ -107,5 +107,6 @@ The Lean development proves the rational dispersion identity, the circle equival
 \bibitem{HMB} U. Hayat, I. Ullah, G. Murtaza, N. A. Azam and M. D. Bustamante, Enumerating discrete resonant Rossby/drift wave triads and their application in information security, \emph{Mathematics} \textbf{10} (2022), 4395. \href{https://doi.org/10.3390/math10234395}{doi:10.3390/math10234395}.
 \bibitem{KY} N. Kishimoto and T. Yoneda, A number theoretical observation of a resonant interaction of Rossby waves, \emph{Kodai Math. J.} \textbf{40} (2017), 16--20. \href{https://doi.org/10.2996/kmj/1490083220}{doi:10.2996/kmj/1490083220}.
 \bibitem{Kopp} G. S. Kopp, The arithmetic geometry of resonant Rossby wave triads, \emph{SIAM J. Appl. Algebra Geom.} \textbf{1} (2017), 352--373. \href{https://doi.org/10.1137/16M1077593}{doi:10.1137/16M1077593}.
+\bibitem{Counterexamples} P. Wu and Q. Peng, Counterexamples to Kopp's quartic bound for resonant Rossby waves, preprint, version 1.0.1 (2026). \href{https://doi.org/10.5281/zenodo.24591008}{doi:10.5281/zenodo.24591008}.
 \end{thebibliography}
 \end{document}
