@@ -1,11 +1,15 @@
-# Circle enumeration and a sharpness family for resonant Rossby wave triads
+# Circle enumeration and a sharpness family for resonant Rossby wave triads | 共振罗斯贝波三元组的整数圆枚举与四次增长构造
 
 **Peiwei Wu** · Shandong Medical and Pharmaceutical University (formerly Binzhou Medical University)  
 **Qian Peng** · The University of Melbourne · Corresponding author
 
-[Paper](manuscript.pdf) · [LaTeX source](manuscript.tex) · [Lean theorem audit](Main.lean) · [Exact enumeration in Python](enumerate_triads.py)
+[Paper](manuscript.pdf) · [Version DOI 10.5281/zenodo.24613761](https://doi.org/10.5281/zenodo.24613761) · [LaTeX source](manuscript.tex) · [Lean theorem audit](Main.lean) · [Exact enumeration in Python](enumerate_triads.py)
 
-A nonzonal square-torus output mode of squared length M has at most twice as many ordered resonant decompositions as there are signed, ordered representations of M³ by two squares. Enumerating those circles gives a deterministic box search in N² times a power of log N. A separate infinite family of primitive exact resonances satisfies (a/b⁴)² = 3 − 8/b². Along this family a/b⁴ approaches √3 from below as b grows, so any uniform polynomial upper bound requires exponent at least four. A [subsequent counterexample](https://doi.org/10.5281/zenodo.24591008) at b = 34 has a/b⁴ > 250 and disproves Kopp's proposed coefficient √3.
+**Exact Rossby wave triad enumeration.** A nonzonal square-torus output mode of squared length M has at most twice as many ordered resonant decompositions as there are signed, ordered representations of M³ by two squares. Enumerating those circles gives a deterministic box search in N² times a power of log N. A separate infinite family of primitive exact resonances satisfies (a/b⁴)² = 3 − 8/b². Along this family a/b⁴ approaches √3 from below as b grows, so any uniform polynomial upper bound requires exponent at least four. A [subsequent counterexample](https://doi.org/10.5281/zenodo.24591008) at b = 34 has a/b⁴ > 250 and disproves Kopp's proposed coefficient √3.
+
+本文把给定输出波向量的共振分解化为整数圆上的枚举，得到近二次时间的有限盒完整搜索。另一组 Pell 方程构造说明，统一多项式上界的指数至少为四。
+
+**Keywords · 关键词**　exact Rossby wave triads · fixed-output enumeration · integer circle · quartic growth · 罗斯贝波共振三元组 · 整数圆枚举
 
 ## Build and verify
 
@@ -39,3 +43,9 @@ python3 enumerate_triads.py --check
 ```
 
 At N = 100 the program finds 12 primitive classes, or 29 classes including dilations. The check enumerates all integer points on the first 100 norm circles independently and compares both box counts and the actual tuples with a direct four-coordinate search at N = 32.
+
+## GitHub topics
+
+`rossby-waves` `wave-resonance` `diophantine-equations` `gaussian-integers` `pell-equation` `enumeration-algorithms` `lean4`
+
+[Original question, search terms, and citation](docs/discoverability.md)
